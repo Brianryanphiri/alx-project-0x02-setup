@@ -1,10 +1,10 @@
 import type { NextPage, GetStaticProps } from 'next';
 import Header from '@/components/layout/Header';
 import UserCard from '@/components/common/UserCard';
-import { UserProps } from '@/interfaces';
+import { User } from '@/interfaces';
 
 interface UsersPageProps {
-  users: UserProps[];
+  users: User[];
 }
 
 const Users: NextPage<UsersPageProps> = ({ users }) => {
@@ -34,7 +34,7 @@ const Users: NextPage<UsersPageProps> = ({ users }) => {
 export const getStaticProps: GetStaticProps = async () => {
   try {
     const res = await fetch('https://jsonplaceholder.typicode.com/users');
-    const users: UserProps[] = await res.json();
+    const users: User[] = await res.json();
 
     return {
       props: {
@@ -42,7 +42,7 @@ export const getStaticProps: GetStaticProps = async () => {
       },
     };
   } catch (error) {
-    console.error('Error fetching users:', error);
+    console.error('Failed to fetch users:', error);
     return {
       props: {
         users: [],
