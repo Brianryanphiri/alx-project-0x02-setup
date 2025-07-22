@@ -1,22 +1,17 @@
-// components/common/Button.tsx
-import React from 'react';
-import { ButtonProps } from '../../interfaces';
+import type { NextPage } from 'next'
+import { Button } from '@/components/common/Button'
 
-const sizeClasses = {
-  small: 'px-3 py-1 text-sm',
-  medium: 'px-4 py-2 text-base',
-  large: 'px-5 py-3 text-lg',
-};
-
-const Button: React.FC<ButtonProps> = ({ label, size = 'medium', shape = 'rounded-md', onClick }) => {
+const About: NextPage = () => {
   return (
-    <button
-      onClick={onClick}
-      className={`bg-blue-600 text-white ${sizeClasses[size]} ${shape} hover:bg-blue-700 transition-all`}
-    >
-      {label}
-    </button>
-  );
-};
+    <div className="flex flex-col items-center justify-center min-h-screen gap-4 bg-yellow-100 p-4">
+      <h1 className="text-4xl font-bold text-yellow-700 mb-6">This is the About Page</h1>
 
-export default Button;
+      <Button size="small" shape="rounded-sm">Small Button</Button>
+      <Button size="medium" shape="rounded-md">Medium Button</Button>
+      <Button size="large" shape="rounded-full">Large Button</Button>
+    </div>
+  )
+}
+
+export default About
+
